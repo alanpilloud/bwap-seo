@@ -9,9 +9,17 @@ Version: 0.1
 add_action('wp_head', function () {
     global $post;
 
+    /**
+    * Get Title
+    *
+    * if you are using the plugin BWAP Title Tag, you will benefit from the function bwap_get_title
+    */
+    $title = function_exists('bwap_get_title') ? bwap_get_title() : get_the_title();
+    echo
+    '<meta property="og:title" content="'.$title.'"/>',
+    '<meta name="twitter:title" content="'.$title.'"/>';
     ?>
-    <meta property="og:title" content="<?php the_title(); ?>"/>
-    <meta name="twitter:title" content="><?php the_title() ?>"/>
+
     <meta property="og:url" content="<?php the_permalink(); ?>"/>
     <meta property="og:type" content="<?= is_singular('post') ? 'article' : 'page' ?>"/>
     <meta property="og:site_name" content="<?php echo get_bloginfo(); ?>"/>
