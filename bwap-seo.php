@@ -11,10 +11,8 @@ add_action('wp_head', function () {
 
     /**
     * Get Title
-    *
-    * if you are using the plugin BWAP Title Tag, you will benefit from the function bwap_get_title
     */
-    $title = function_exists('bwap_get_title') ? bwap_get_title() : get_the_title();
+    $title = get_the_title();
     echo
     '<meta property="og:title" content="'.$title.'"/>',
     '<meta name="twitter:title" content="'.$title.'"/>';
